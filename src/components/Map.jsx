@@ -7,10 +7,14 @@ export default function MapF() {
     () => import('../components/MapC'),
     {
       loading: () =>
-        <ClockLoader
-          color="#36d7b7"
-          size={70}
-        />
+        <div
+        className="flex justify-center items-center min-h-screen"
+        >
+          <ClockLoader
+            color="#36d7b7"
+            size={70}
+          />
+        </div>
       ,
       ssr: false
     }
