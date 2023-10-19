@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
-import HashLoader from 'react-spinners/HashLoader';
+import ClockLoader from 'react-spinners/ClockLoader';
 import { useQuery } from "@tanstack/react-query";
 
 const MapC = ({
@@ -38,11 +38,11 @@ const MapC = ({
     });
     if (isLoading1 && isFetching1) {
         return (
-            <main className="min-h-screen flex justify-center items-center">
+            <main className="flex justify-center items-center">
 
-                <HashLoader
+                <ClockLoader
                     color="#36d7b7"
-                    size={100}
+                    size={50}
                 />
             </main>
         )
@@ -66,8 +66,8 @@ const MapC = ({
         <>
             {
                 isLoading1 ? (
-                    <div className="flex justify-center items-center min-h-screen">
-                        <HashLoader
+                    <div className="flex justify-center items-center h-full">
+                        <ClockLoader
                             color="#36d7b7"
                             size={100}
                         />
@@ -87,8 +87,7 @@ const MapC = ({
                             />
                             <Marker position={[lat, lng]} draggable={true} animate={true}>
                                 <Popup>
-                                    A pretty CSS3 popup. <br /> Easily customizable.
-
+                                    {data1.regionName} <br />{data1.zoneName}
                                 </Popup>
                             </Marker>
                         </MapContainer>

@@ -4,7 +4,7 @@ import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
 import { LocationContext } from '../context/LocationContext'
-import HashLoader from 'react-spinners/HashLoader';
+import ClockLoader from 'react-spinners/ClockLoader'
 import { useQuery } from '@tanstack/react-query';
 const MapC = () => {
     const { lat, lon, error, loading } = useContext(LocationContext);
@@ -24,11 +24,11 @@ const MapC = () => {
     });
     if (isLoading) {
         return (
-            <main className="min-h-screen flex justify-center items-center">
+            <main className=" flex justify-center items-center">
 
-                <HashLoader
+                <ClockLoader
                     color="#36d7b7"
-                    size={100}
+                    size={50}
                 />
             </main>
         )
@@ -63,8 +63,7 @@ const MapC = () => {
             />
             <Marker position={[lat, lon]} draggable={true} animate={true}>
                 <Popup>
-                    A pretty CSS3 popup. <br /> Easily customizable.
-
+                    {data.regionName} <br />{data.zoneName}
                 </Popup>
             </Marker>
         </MapContainer>

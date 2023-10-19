@@ -27,30 +27,31 @@ const Details = () => {
         enabled: false,
     });
     return (
-        <div>
-            <input
-                placeholder="Enter IP Address"
-                value={ip}
-                onChange={(e) => setIp(e.target.value)}
-            />
-            <button
-                onClick={() => refetch()}
-            >
-                Search
-            </button>
-            {data ? (
-                <Map data={data} isLoading={isLoading}
-                    isError={isError}
-                    error={error}
-                    isFetching={isFetching}
+        <div className="flex h-screen flex-col">
+            <div className="w-full h-1/2 bg-red-500">
+                <input
+                    placeholder="Enter IP Address"
+                    value={ip}
+                    onChange={(e) => setIp(e.target.value)}
                 />
-            ) : (
-                <MapF />
-            )}
-
+                <button onClick={() => refetch()}>Search</button>
+            </div>
+            <div className="w-full h-1/2">
+                {data ? (
+                    <Map
+                        data={data}
+                        isLoading={isLoading}
+                        isError={isError}
+                        error={queryError}
+                        isFetching={isFetching}
+                    />
+                ) : (
+                    <MapF />
+                )}
+            </div>
         </div>
-    )
-}
+    );
+};
 
 export default Details
 
