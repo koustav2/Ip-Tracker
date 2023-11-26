@@ -1,7 +1,8 @@
+import { Axios } from "axios";
+
 
 const fetcher = async (address) => {
-    const response = await fetch(address);
-    const data = await response.json();
+    const { data } = await Axios.get(address);
     return data;
 };
 
