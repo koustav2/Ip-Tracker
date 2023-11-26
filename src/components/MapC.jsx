@@ -15,7 +15,7 @@ const MapC = () => {
     } = useQuery({
         queryKey: ['timezone', lat, lon],
         queryFn: async () => {
-            const res = await fetch(`https://api.ipgeolocation.io/timezone?apiKey=3e4ad07c20bb4170a1fb1ef712650bd2&lat=32.69922&long=-117.11281`)
+            const res = await fetch(`https://api.ipgeolocation.io/timezone?apiKey=${process.env.NEXT_PUBLIC_API_KEY}&lat=32.69922&long=-117.11281`)
             return res.json()
 
         },
@@ -24,7 +24,7 @@ const MapC = () => {
     });
     const getInitialData = async () => {
         const res = await fetch(
-            `https://geo.ipify.org/api/v2/country?apiKey=at_8PnLTa5HP14za8jK8cZzj4GYL8v2F&ipAddress=103.51.58.105`
+            `https://geo.ipify.org/api/v2/country?apiKey=${process.env.NEXT_PUBLIC_IPIFY_API_KEY}&ipAddress=103.51.58.105`
         );
         return res.json()
 
